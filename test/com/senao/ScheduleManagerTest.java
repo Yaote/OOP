@@ -14,11 +14,15 @@ import org.junit.Test;
 
 public class ScheduleManagerTest {
 	@Test
-	public void main() throws Exception {
+	public void 正常執行() throws Exception {
 		File file = new File("D:\\schedule.json");
 		ScheduleManager scheduleManager = new ScheduleManager();
 		List<Schedule> scheduleList = scheduleManager.ProcessConfigs(file);
 		System.out.println(scheduleManager.Count());
-		System.out.println(scheduleList.toString());
+		for (Schedule schedule : scheduleList) {
+			System.out.println(schedule.getExt());
+			System.out.println(schedule.getTime());
+			System.out.println(schedule.getInterval());
+		}
 	}
 }

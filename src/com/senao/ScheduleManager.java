@@ -20,55 +20,38 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 public class ScheduleManager {
-	private List<Schedule> schedules;
-	private int Count;
+	private List<Schedule> schedules = new ArrayList<Schedule>();
 
 	/**
-	 * @return the schedules
-	 */
-	public List<Schedule> getSchedules() {
-		return schedules;
-	}
-
-	/**
-	 * @param schedules the schedules to set
-	 */
-	public void setSchedules(List<Schedule> schedules) {
-		this.schedules = schedules;
-	}
-
-	/**
+	 * 取得ArrayList的筆數
+	 * 
 	 * @return the count
 	 */
 	public int Count() {
-		this.Count = (schedules == null) ? 0 : schedules.size();
-		return Count;
+		return this.schedules.size();
 	}
 
-	public List<Schedule> ProcessConfigs(File scheduleFile) throws FileNotFoundException {
-		if (!scheduleFile.exists())
-			throw new FileNotFoundException();
+	/**
+	 * 將JSON內容轉換成ArrayList
+	 * 
+	 * @param scheduleFile 檔案路徑
+	 * @return ArrayList<Config>
+	 * @throws FileNotFoundException
+	 */
+	public List<Schedule> ProcessConfigs(File scheduleFile) throws FileNotFoundException, IOException, ParseException {
 		this.schedules = new ArrayList<Schedule>();
 		JSONParser parser = new JSONParser();
-		try {
-			JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(scheduleFile));
-			// loop array
-			JSONArray configsArray = (JSONArray) jsonObject.get("schedules");
-			for (int i = 0; i < configsArray.size(); i++) {
-				JSONObject config = (JSONObject) configsArray.get(i);
-				String ext = config.get("ext").toString();
-				String time = config.get("time").toString();
-				String interval = config.get("interval").toString();
-				this.schedules.add(new Schedule(ext, time, interval));
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
+		// 將實體檔案內容轉換成JSONObject
+		JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(scheduleFile));
+		// loop array
+		JSONArray configsArray = (JSONArray) jsonObject.get("schedules");
+		for (int i = 0; i < configsArray.size(); i++) {
+			JSONObject config = (JSONObject) configsArray.get(i);
+			String ext = config.get("ext").toString();
+			String time = config.get("time").toString();
+			String interval = config.get("interval").toString();
+			this.schedules.add(new Schedule(ext, time, interval));
 		}
-		return schedules;
+		return this.schedules;
 	}
 }
