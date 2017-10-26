@@ -17,7 +17,7 @@ public class ScheduleManagerTest {
 	public void 正常執行() throws Exception {
 		File file = new File("D:\\schedule.json");
 		ScheduleManager scheduleManager = new ScheduleManager();
-		List<Schedule> scheduleList = scheduleManager.ProcessConfigs(file);
+		List<Schedule> scheduleList = (List<Schedule>) scheduleManager.ProcessJsonConfig();
 		System.out.println(scheduleManager.Count());
 		for (Schedule schedule : scheduleList) {
 			System.out.println(schedule.getExt());

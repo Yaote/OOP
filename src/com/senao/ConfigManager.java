@@ -7,42 +7,27 @@
    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 package com.senao;
 
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class ConfigManager {
-	private List<Config> configs = new ArrayList<Config>();
-
-	/**
-	 * 取得ArrayList的筆數
-	 * 
-	 * @return the count
-	 */
-	public int Count() {
-		return this.configs.size();
-	}
+public class ConfigManager extends JsonManager<Config> {
+	private final String path = "/config.json";
 
 	/**
 	 * 將JSON內容轉換成ArrayList
 	 * 
-	 * @param configFile 檔案路徑
 	 * @return ArrayList<Config>
-	 * @throws FileNotFoundException, IOException, ParseException
+	 * @throws ParseException
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
-	public List<Config> ProcessConfigs(File configFile) throws FileNotFoundException, IOException, ParseException {
-		this.configs = new ArrayList<Config>();
-		JSONParser parser = new JSONParser();
-		// 將實體檔案內容轉換成JSONObject
-		JSONObject jsonObject = (JSONObject) parser.parse(new FileReader(configFile));
+	@Override
+	public Object ProcessJsonConfig() throws FileNotFoundException, IOException, ParseException {
+		JSONObject jsonObject = this.GetJsonObject(this.path);
 		// loop array
 		JSONArray configsArray = (JSONArray) jsonObject.get("configs");
 		for (int i = 0; i < configsArray.size(); i++) {
@@ -56,9 +41,9 @@ public class ConfigManager {
 			String destination = config.get("destination").toString();
 			String dir = config.get("dir").toString();
 			String connectionString = config.get("connectionString").toString();
-			this.configs
+			this.objectList
 					.add(new Config(ext, location, subDirectory, unit, remove, handler, destination, dir, connectionString));
 		}
-		return this.configs;
+		return this.objectList;
 	}
 }
