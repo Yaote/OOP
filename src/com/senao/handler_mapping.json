@@ -1,0 +1,6 @@
+{
+	"file": "com.senao.handler.FileHandler",
+	"encode": "com.senao.handler.EncodeHandler",
+	"zip": "com.senao.handler.ZipHandler",
+	"directory": "com.senao.handler.DirectoryHandler"
+}

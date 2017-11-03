@@ -22,7 +22,7 @@ public class Config {
 	 * @param dir 處理後的目錄
 	 * @param connectionString 資料庫連接字串
 	 */
-	public Config(String ext, String location, String subDirectory, String unit, String remove, String handler,
+	public Config(String ext, String location, String subDirectory, String unit, String remove, String[] handler,
 			String destination, String dir, String connectionString) {
 		super();
 		this.ext = ext;
@@ -64,7 +64,7 @@ public class Config {
 	/**
 	 * zip : 壓縮；encode : 加密
 	 */
-	private String handler;
+	private String[] handler;
 
 	/**
 	 * 處理後要儲存到什麼地方，directory : 目錄；db : 資料庫
@@ -119,7 +119,7 @@ public class Config {
 	/**
 	 * @return the handler
 	 */
-	public String getHandler() {
+	public String[] getHandler() {
 		return handler;
 	}
 

@@ -37,7 +37,7 @@ public class ConfigManager extends JsonManager<Config> {
 			String subDirectory = config.get("subDirectory").toString();
 			String unit = config.get("unit").toString();
 			String remove = config.get("remove").toString();
-			String handler = config.get("handler").toString();
+			String[] handler = (String[]) config.get("handler");
 			String destination = config.get("destination").toString();
 			String dir = config.get("dir").toString();
 			String connectionString = config.get("connectionString").toString();
