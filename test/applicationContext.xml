@@ -5,5 +5,5 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
 	<context:annotation-config/>
-	<bean id="myBackupService" class="com.senao.service.MyBackupServiceImpl"></bean>
+	<bean id="myBackupService" class="com.senao.service.impl.MyBackupServiceImpl"></bean>
 </beans>

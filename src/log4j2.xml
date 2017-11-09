@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="error">
+	<Properties>
+		<Property name="fileName">OOP.log</Property>
+		<Property name="logFilePath">d:\\</Property>
+	</Properties>
+	
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<ThresholdFilter level="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="%d{MM-dd HH:mm:ss } [%t] %-5p %l - %m%n" />
+		</Console>
+		
+		<RollingFile name="RollingFile" fileName="${logFilePath}${fileName}" filePattern="${logFilePath}OOP_%d{yyy-MM-dd}.log">
+			<PatternLayout pattern="%d{HH:mm:ss,SSS} %5p %C{1}:%M:%L - %m%n" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+		    </Policies>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<Logger name="org.springframework" level="info"/>
+		<root level="debug">
+			<appender-ref ref="RollingFile" />
+			<appender-ref ref="Console" />
+		</root>
+	</loggers>
+</configuration>  

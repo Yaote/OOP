@@ -5,7 +5,7 @@
    Date Created      : 2017年10月31日
    Original Author   : 015336
    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
-package com.senao.handler;
+package com.senao.handler.impl;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,20 +16,26 @@ import com.senao.Candidate;
 /**
  * @author 015336
  */
-public class FileHandler extends AbstractHandler {
+public class FileHandler extends AbstractHandler
+{
 
 	@Override
-	public byte[] Perform(Candidate candidate, byte[] target) {
+	public byte[] Perform(Candidate candidate, byte[] target)
+	{
 		byte[] result = target;
-		try {
-			if (target == null) {
+		try
+		{
+			if (target == null)
+			{
 
 				result = this.ConvertFileToByteArray(candidate);
 
-			} else {
+			} else
+			{
 				this.ConvertByteArrayToFile(candidate, target);
 			}
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			e.printStackTrace();
 		}
 		return result;
@@ -41,7 +47,8 @@ public class FileHandler extends AbstractHandler {
 	 * @param candidate
 	 * @return byte[]
 	 */
-	private byte[] ConvertFileToByteArray(Candidate candidate) throws IOException {
+	private byte[] ConvertFileToByteArray(Candidate candidate) throws IOException
+	{
 		byte[] target = null;
 		FileOutputStream fileOuputStream;
 		fileOuputStream = new FileOutputStream(candidate.getConfig().getLocation() + "/" + candidate.getName());
@@ -57,7 +64,8 @@ public class FileHandler extends AbstractHandler {
 	 * @param target
 	 * @throws IOException
 	 */
-	private void ConvertByteArrayToFile(Candidate candidate, byte[] target) throws IOException {
+	private void ConvertByteArrayToFile(Candidate candidate, byte[] target) throws IOException
+	{
 		File outputFile = new File(candidate.getConfig().getDestination() + candidate.getName());
 		FileOutputStream fileOuputStream = new FileOutputStream(outputFile);
 		fileOuputStream.write(target);

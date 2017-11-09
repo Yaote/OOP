@@ -12,7 +12,8 @@ import java.util.Date;
 /**
  * @author 015336
  */
-public class Candidate {
+public class Candidate
+{
 	private Config config;
 	private Date fileDateTime;
 	private String name;
@@ -22,70 +23,80 @@ public class Candidate {
 	/**
 	 * @return the config
 	 */
-	public Config getConfig() {
+	public Config getConfig()
+	{
 		return config;
 	}
 
 	/**
 	 * @param config the config to set
 	 */
-	public void setConfig(Config config) {
+	public void setConfig(Config config)
+	{
 		this.config = config;
 	}
 
 	/**
 	 * @return the fileDateTime
 	 */
-	public Date getFileDateTime() {
+	public Date getFileDateTime()
+	{
 		return fileDateTime;
 	}
 
 	/**
 	 * @param fileDateTime the fileDateTime to set
 	 */
-	public void setFileDateTime(Date fileDateTime) {
+	public void setFileDateTime(Date fileDateTime)
+	{
 		this.fileDateTime = fileDateTime;
 	}
 
 	/**
 	 * @return the name
 	 */
-	public String getName() {
+	public String getName()
+	{
 		return name;
 	}
 
 	/**
 	 * @param name the name to set
 	 */
-	public void setName(String name) {
+	public void setName(String name)
+	{
 		this.name = name;
 	}
 
 	/**
 	 * @return the processName
 	 */
-	public String getProcessName() {
+	public String getProcessName()
+	{
 		return processName;
 	}
 
 	/**
 	 * @param processName the processName to set
 	 */
-	public void setProcessName(String processName) {
+	public void setProcessName(String processName)
+	{
 		this.processName = processName;
 	}
 
 	/**
 	 * @return the size
 	 */
-	public int getSize() {
+	public int getSize()
+	{
 		return size;
 	}
 
 	/**
 	 * @param size the size to set
 	 */
-	public void setSize(int size) {
+	public void setSize(int size)
+	{
 		this.size = size;
 	}
 

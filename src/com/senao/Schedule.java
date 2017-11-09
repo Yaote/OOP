@@ -6,7 +6,8 @@
    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 package com.senao;
 
-public class Schedule {
+public class Schedule
+{
 
 	/**
 	 * Schedule constructor
@@ -15,7 +16,8 @@ public class Schedule {
 	 * @param time 排程所處理的時間
 	 * @param interval 排程執行的間隔
 	 */
-	public Schedule(String ext, String time, String interval) {
+	public Schedule(String[] ext, String time, String interval)
+	{
 		super();
 		this.ext = ext;
 		this.time = time;
@@ -25,7 +27,7 @@ public class Schedule {
 	/**
 	 * 排程所處理的檔案格式
 	 */
-	private String ext;
+	private String[] ext;
 
 	/**
 	 * 排程所處理的時間
@@ -40,21 +42,24 @@ public class Schedule {
 	/**
 	 * @return the ext
 	 */
-	public String getExt() {
+	public String[] getExt()
+	{
 		return ext;
 	}
 
 	/**
 	 * @return the time
 	 */
-	public String getTime() {
+	public String getTime()
+	{
 		return time;
 	}
 
 	/**
 	 * @return the interval
 	 */
-	public String getInterval() {
+	public String getInterval()
+	{
 		return interval;
 	}
 
