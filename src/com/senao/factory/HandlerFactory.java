@@ -20,25 +20,31 @@ import com.senao.handler.Handler;
 /**
  * @author 015336
  */
-public class HandlerFactory {
+public class HandlerFactory
+{
 	private static HashMap<String, String> handlerDictionary = new HashMap<String, String>();
-	private final String path = "handler_mapping.json";
+	private final String path = "/com/senao/handler_mapping.json";
 
-	public HandlerFactory() {
+	public HandlerFactory()
+	{
 		ObjectMapper objectMapper = new ObjectMapper();
 		URL url = getClass().getResource(this.path);
-		try {
+		try
+		{
 			HandlerFactory.handlerDictionary = objectMapper.readValue(new File(url.getPath()),
-					new TypeReference<Map<String, String>>() {
+					new TypeReference<Map<String, String>>()
+					{
 					});
-		} catch (IOException e) {
+		} catch (IOException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
 	public Handler Create(String handlerName)
-			throws InstantiationException, IllegalAccessException, ClassNotFoundException {
+			throws InstantiationException, IllegalAccessException, ClassNotFoundException
+	{
 		return (Handler) Class.forName(HandlerFactory.handlerDictionary.get(handlerName).toString()).newInstance();
 	}
 }

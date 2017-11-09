@@ -12,6 +12,7 @@ import com.senao.Candidate;
 /**
  * @author 015336
  */
-public interface Handler {
+public interface Handler
+{
 	public byte[] Perform(Candidate candidate, byte[] target);
 }

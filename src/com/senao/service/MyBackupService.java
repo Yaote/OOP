@@ -10,16 +10,15 @@ package com.senao.service;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import org.json.simple.parser.ParseException;
-
 /**
  * @author 015336
  */
-public interface MyBackupService {
+public interface MyBackupService
+{
 	/**
 	 * 將實體設定檔讀進系統
 	 */
-	public void ProcessJsonConfigs() throws FileNotFoundException, IOException, ParseException;
+	public void ProcessJsonConfigs() throws FileNotFoundException, IOException;
 
 	/**
 	 * 執行備份

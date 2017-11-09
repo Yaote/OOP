@@ -11,19 +11,31 @@ import java.util.List;
 
 import org.junit.Test;
 
-public class ConfigManagerTest {
+import com.senao.manager.ConfigManager;
+
+public class ConfigManagerTest
+{
 	@Test
-	public void 正常執行() throws Exception {
+	public void 正常執行() throws Exception
+	{
 		ConfigManager configManager = new ConfigManager();
-		List<Config> configList = (List<Config>) configManager.ProcessJsonConfig();
+		List<Config> configList = configManager.ProcessJsonConfig();
 		System.out.println(configManager.Count());
-		for (Config config : configList) {
-			System.out.println(config.getExt());
+
+		for (Config config : configList)
+		{
+			for (String ext : config.getExt())
+			{
+				System.out.println(ext);
+			}
 			System.out.println(config.getLocation());
 			System.out.println(config.getSubDirectory());
 			System.out.println(config.getUnit());
 			System.out.println(config.getRemove());
-			System.out.println(config.getHandler());
+			for (String handler : config.getHandler())
+			{
+				System.out.println(handler);
+			}
 			System.out.println(config.getDestination());
 			System.out.println(config.getDir());
 			System.out.println(config.getConnectionString());

@@ -7,7 +7,10 @@
    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 package com.senao;
 
-public class Config {
+import java.util.Arrays;
+
+public class Config
+{
 
 	/**
 	 * Config constructor
@@ -22,8 +25,9 @@ public class Config {
 	 * @param dir 處理後的目錄
 	 * @param connectionString 資料庫連接字串
 	 */
-	public Config(String ext, String location, String subDirectory, String unit, String remove, String[] handler,
-			String destination, String dir, String connectionString) {
+	public Config(String[] ext, String location, Boolean subDirectory, String unit, Boolean remove, String[] handler,
+			String destination, String dir, String connectionString)
+	{
 		super();
 		this.ext = ext;
 		this.location = location;
@@ -39,7 +43,7 @@ public class Config {
 	/**
 	 * 檔案格式
 	 */
-	private String ext;
+	private String[] ext;
 
 	/**
 	 * 要備份檔案的目錄
@@ -49,7 +53,7 @@ public class Config {
 	/**
 	 * 是否處理子目錄，true : 處理子目錄；false : 不 處理子目錄
 	 */
-	private String subDirectory;
+	private Boolean subDirectory;
 
 	/**
 	 * 備份單位，file : 以單一檔案為處理單位；directory : 以整個目錄為處理單位
@@ -59,7 +63,7 @@ public class Config {
 	/**
 	 * 處理完是否刪除檔案，true : 刪除；false : 不刪除
 	 */
-	private String remove;
+	private Boolean remove;
 
 	/**
 	 * zip : 壓縮；encode : 加密
@@ -84,64 +88,81 @@ public class Config {
 	/**
 	 * @return the ext
 	 */
-	public String getExt() {
+	public String[] getExt()
+	{
 		return ext;
 	}
 
 	/**
 	 * @return the location
 	 */
-	public String getLocation() {
+	public String getLocation()
+	{
 		return location;
 	}
 
 	/**
 	 * @return the subDirectory
 	 */
-	public String getSubDirectory() {
+	public Boolean getSubDirectory()
+	{
 		return subDirectory;
 	}
 
 	/**
 	 * @return the unit
 	 */
-	public String getUnit() {
+	public String getUnit()
+	{
 		return unit;
 	}
 
 	/**
 	 * @return the remove
 	 */
-	public String getRemove() {
+	public Boolean getRemove()
+	{
 		return remove;
 	}
 
 	/**
 	 * @return the handler
 	 */
-	public String[] getHandler() {
+	public String[] getHandler()
+	{
 		return handler;
 	}
 
 	/**
 	 * @return the destination
 	 */
-	public String getDestination() {
+	public String getDestination()
+	{
 		return destination;
 	}
 
 	/**
 	 * @return the dir
 	 */
-	public String getDir() {
+	public String getDir()
+	{
 		return dir;
 	}
 
 	/**
 	 * @return the connectionString
 	 */
-	public String getConnectionString() {
+	public String getConnectionString()
+	{
 		return connectionString;
+	}
+
+	@Override
+	public String toString()
+	{
+		return "Config [ext=" + Arrays.toString(ext) + ", location=" + location + ", subDirectory=" + subDirectory
+				+ ", unit=" + unit + ", remove=" + remove + ", handler=" + Arrays.toString(handler) + ", destination="
+				+ destination + ", dir=" + dir + ", connectionString=" + connectionString + "]";
 	}
 
 }

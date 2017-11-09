@@ -7,6 +7,8 @@
    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 package com.senao;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -16,17 +18,25 @@ import com.senao.service.MyBackupService;
 /**
  * @author 015336
  */
-public class MyBackupServiceTest {
+public class MyBackupServiceTest
+{
+	private Logger logger = LogManager.getLogger(MyBackupServiceTest.class);
+
 	private HandlerFactory handlerFactory;
 
 	@Test
-	public void 正常執行() {
+	public void 正常執行()
+	{
 		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext(new String[] { "applicationContext.xml" });
 		MyBackupService myBackupService = (MyBackupService) ctx.getBean("myBackupService");
-		try {
+		try
+		{
+			logger.info("Start to run myBackupService.");
 			myBackupService.ProcessJsonConfigs();
 			myBackupService.DoBackup();
-		} catch (Exception e) {
+			logger.info("To run myBackupService end.");
+		} catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 	}

@@ -7,20 +7,26 @@
    ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*/
 package com.senao;
 
-import java.io.File;
 import java.util.List;
 
 import org.junit.Test;
 
-public class ScheduleManagerTest {
+import com.senao.manager.ScheduleManager;
+
+public class ScheduleManagerTest
+{
 	@Test
-	public void 正常執行() throws Exception {
-		File file = new File("D:\\schedule.json");
+	public void 正常執行() throws Exception
+	{
 		ScheduleManager scheduleManager = new ScheduleManager();
-		List<Schedule> scheduleList = (List<Schedule>) scheduleManager.ProcessJsonConfig();
+		List<Schedule> scheduleList = scheduleManager.ProcessJsonConfig();
 		System.out.println(scheduleManager.Count());
-		for (Schedule schedule : scheduleList) {
-			System.out.println(schedule.getExt());
+		for (Schedule schedule : scheduleList)
+		{
+			for (String ext : schedule.getExt())
+			{
+				System.out.println(ext);
+			}
 			System.out.println(schedule.getTime());
 			System.out.println(schedule.getInterval());
 		}
